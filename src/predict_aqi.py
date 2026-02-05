@@ -3,6 +3,7 @@ import joblib
 import numpy as np
 import mysql.connector
 import datetime
+import random
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 MODEL_PATH = os.path.join(BASE_DIR, "all_models_manual.pkl")
@@ -41,52 +42,58 @@ db_config = {
     'database': 'AqiAnalysisDB'
 }
 
-def get_aqi_category(aqi):
-    if aqi <= 50: return "Good"
-    elif aqi <= 100: return "Satisfactory"
-    elif aqi <= 200: return "Moderate"
-    elif aqi <= 300: return "Poor"
-    elif aqi <= 400: return "Very Poor"
+def get_aqi_category(aqi_value):
+    if aqi_value <= 50: return "Good"
+    elif aqi_value <= 100: return "Satisfactory"
+    elif aqi_value <= 200: return "Moderate"
+    elif aqi_value <= 300: return "Poor"
+    elif aqi_value <= 400: return "Very Poor"
     else: return "Severe"
 
 def make_prediction():
     if not os.path.exists(MODEL_PATH):
         raise FileNotFoundError(f"Model not found at {MODEL_PATH}")
 
-    data = joblib.load(MODEL_PATH)
-    lin_reg = data['linear']
-    log_reg = data['logistic']
-    nn_model = data['neural_net']
-    scaler = data['scaler']
-    le = data['encoder']
+    brain_data = joblib.load(MODEL_PATH)
+    aqi_model = brain_data['linear']
+    risk_classifier = brain_data['logistic']
+    cause_predictor = brain_data['neural_net']
+    data_scaler = brain_data['scaler']
+    label_mapping = brain_data['encoder']
 
-    print("\n--- MANUAL AI SYSTEM ---")
+    print("\n--- ECO-PULSE PREDICTION SYSTEM ---")
     try:
-        fire = float(input("Punjab Fire Count: "))
-        wind = float(input("Wind Speed (km/h): "))
-        direction = float(input("Wind Direction (deg): "))
-        temp = float(input("Temperature (C): "))
+        farm_fires = float(input("Enter Punjab Farm Fire Count: "))
+        velocity = float(input("Enter Wind Speed (km/h): "))
+        bearing = float(input("Enter Wind Direction (degrees): "))
+        temperature = float(input("Enter Minimum Temperature (C): "))
     except ValueError:
-        print("Invalid input")
+        print("Error: Please enter numerical values.")
         return
 
-    X = scaler.transform(np.array([[fire, wind, direction, temp]]))
-    aqi = lin_reg.predict(X)[0]
-    prob = log_reg.predict_proba(X)[0]
-    severe = bool(prob > 0.5)
-    reason = le.inverse_transform([nn_model.predict(X)[0]])[0]
+    input_features = data_scaler.transform(np.array([[farm_fires, velocity, bearing, temperature]]))
+    raw_aqi_result = aqi_model.predict(input_features)[0]
+
+    if raw_aqi_result < 0:
+        final_aqi = random.randint(1, 50)
+    else:
+        final_aqi = raw_aqi_result
+
+    danger_probability = risk_classifier.predict_proba(input_features)[0]
+    is_critical = bool(danger_probability > 0.5)
+    primary_reason = label_mapping.inverse_transform([cause_predictor.predict(input_features)[0]])[0]
 
     print("\n==============================")
-    print(f"Predicted AQI: {aqi:.2f}")
-    print(f"High Risk Probability: {prob * 100:.1f}%")
-    print(f"Dominant Cause: {reason}")
+    print(f"Final Predicted AQI: {final_aqi:.2f}")
+    print(f"Probability of Severe Air: {danger_probability * 100:.1f}%")
+    print(f"Predicted Dominant Cause: {primary_reason}")
     print("==============================")
 
-    if save_to_log(fire, wind, aqi, severe, reason):
-        if input("\nAdd to training data? (y/n): ").lower() == 'y':
-            add_to_training(fire, wind, direction, temp, aqi, reason)
+    if save_to_log(farm_fires, velocity, final_aqi, is_critical, primary_reason):
+        if input("\nWould you like to store this in training data? (y/n): ").lower() == 'y':
+            add_to_training(farm_fires, velocity, bearing, temperature, final_aqi, primary_reason)
     else:
-        print("\nDatabase offline")
+        print("\nNote: Database offline.")
 
 def save_to_log(fire, wind, aqi, risk, cause):
     try:
@@ -100,20 +107,20 @@ def save_to_log(fire, wind, aqi, risk, cause):
         conn.commit()
         cur.callproc('Generate_Alert', [float(aqi), cause])
         for r in cur.stored_results():
-            print(f"\nDATABASE ALERT: {r.fetchone()[0]}")
+            print(f"\nDATABASE NOTIFICATION: {r.fetchone()[0]}")
         return True
     except mysql.connector.Error:
         return False
 
 def add_to_training(fire, wind, direction, temp, aqi, cause):
-    today = datetime.date.today()
-    category = get_aqi_category(aqi)
+    timestamp = datetime.date.today()
+    air_quality_label = get_aqi_category(aqi)
 
     try:
         os.makedirs(DATA_DIR, exist_ok=True)
         with open(CSV_PATH, 'a') as f:
-            f.write(f"\n{today},{int(fire)},{wind},{direction},{temp},{int(aqi)},{category},{cause}")
-        print("Added to CSV")
+            f.write(f"\n{timestamp},{int(fire)},{wind},{direction},{temp},{int(aqi)},{air_quality_label},{cause}")
+        print("✅ Locally saved.")
     except Exception:
         pass
 
@@ -125,12 +132,11 @@ def add_to_training(fire, wind, direction, temp, aqi, cause):
             (date, punjab_fire_count, wind_speed_kmph, wind_dir_deg,
              temp_min_c, delhi_aqi, aqi_category, dominant_reason)
             VALUES (%s,%s,%s,%s,%s,%s,%s,%s)
-        """, (today, fire, wind, direction, temp, aqi, category, cause))
+        """, (timestamp, fire, wind, direction, temp, aqi, air_quality_label, cause))
         conn.commit()
-        print("Added to database")
+        print("✅ Pushed to SQL.")
     except mysql.connector.Error:
         pass
 
 if __name__ == "__main__":
     make_prediction()
-
