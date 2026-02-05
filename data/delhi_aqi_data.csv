@@ -1,0 +1,102 @@
+date,punjab_fire_count,wind_speed_kmph,wind_dir_deg,temp_min_c,delhi_aqi,aqi_category,dominant_reason
+2023-10-01,120,8.5,140,24,155,Moderate,Baseline Pollution
+2023-10-02,145,9.1,135,23,162,Moderate,Baseline Pollution
+2023-10-03,110,8.8,150,23,158,Moderate,Baseline Pollution
+2023-10-04,180,7.5,160,22,170,Moderate,Baseline Pollution
+2023-10-05,210,6.5,290,22,185,Moderate,Baseline Pollution
+2023-10-06,250,6.0,310,21,210,Poor,Stubble Transport
+2023-10-07,320,5.5,315,21,225,Poor,Stubble Transport
+2023-10-08,410,5.2,300,20,240,Poor,Stubble Transport
+2023-10-09,550,4.8,320,20,265,Poor,Stubble Transport
+2023-10-10,680,4.5,310,19,280,Poor,Stubble Transport
+2023-10-11,850,4.2,315,19,310,Very Poor,Stubble Transport
+2023-10-12,920,4.0,330,18,325,Very Poor,Stubble Transport
+2023-10-13,1100,3.8,310,18,340,Very Poor,Stubble Transport
+2023-10-14,1250,3.5,305,17,355,Very Poor,Stubble Transport
+2023-10-15,1400,3.2,315,17,370,Very Poor,Stubble Transport
+2023-10-16,1600,3.0,320,16,390,Very Poor,Stubble Transport
+2023-10-17,1850,2.8,310,16,405,Severe,Stubble Transport
+2023-10-18,2100,2.5,315,15,420,Severe,Stubble Transport
+2023-10-19,2300,2.5,300,15,435,Severe,Stubble Transport
+2023-10-20,2500,2.2,310,14,445,Severe,Stubble Transport
+2023-10-21,2700,2.0,320,14,455,Severe,Stubble Transport
+2023-10-22,2900,2.0,315,13,465,Severe,Stubble Transport
+2023-10-23,3100,2.0,310,13,475,Severe,Stubble Transport
+2023-10-24,3230,2.0,305,13,485,Severe,Stubble Transport
+2023-10-25,3150,2.2,315,12,480,Severe,Stubble Transport
+2023-10-26,3000,2.5,320,12,470,Severe,Stubble Transport
+2023-10-27,2800,2.8,310,12,460,Severe,Stubble Transport
+2023-10-28,2600,3.0,315,11,450,Severe,Stubble Transport
+2023-10-29,2400,3.2,300,11,440,Severe,Stubble Transport
+2023-10-30,2200,3.5,310,11,425,Severe,Stubble Transport
+2023-10-31,2000,3.8,320,10,410,Severe,Stubble Transport
+2023-11-01,1800,4.0,315,10,395,Very Poor,Stubble Transport
+2023-11-02,1600,4.2,310,10,380,Very Poor,Stubble Transport
+2023-11-03,1400,4.5,305,9,365,Very Poor,Stubble Transport
+2023-11-04,1200,4.8,315,9,350,Very Poor,Stubble Transport
+2023-11-05,2500,2.0,310,9,450,Severe,Stubble Transport
+2023-11-06,1000,5.0,320,9,335,Very Poor,Stubble Transport
+2023-11-07,800,5.2,315,8,320,Very Poor,Stubble Transport
+2023-11-08,600,5.5,310,8,305,Very Poor,Stubble Transport
+2023-11-09,400,5.8,300,8,290,Poor,Stubble Transport
+2023-11-10,300,6.0,310,8,275,Poor,Stubble Transport
+2023-11-11,200,6.2,320,7,260,Poor,Stubble Transport
+2023-11-12,150,6.5,315,7,250,Poor,Baseline Pollution
+2023-11-13,100,6.8,310,7,240,Poor,Baseline Pollution
+2023-11-14,80,7.0,305,7,230,Poor,Baseline Pollution
+2023-11-15,60,7.2,315,6,220,Poor,Baseline Pollution
+2023-11-16,50,7.5,320,6,210,Poor,Baseline Pollution
+2023-11-17,40,7.8,310,6,200,Moderate,Baseline Pollution
+2023-11-18,30,8.0,315,6,190,Moderate,Baseline Pollution
+2023-11-19,20,8.2,300,6,180,Moderate,Baseline Pollution
+2023-11-20,10,8.5,310,5,170,Moderate,Baseline Pollution
+2023-11-21,5,8.8,320,5,160,Moderate,Baseline Pollution
+2023-11-22,2,9.0,315,5,150,Moderate,Baseline Pollution
+2023-11-23,0,9.2,310,5,155,Moderate,Baseline Pollution
+2023-11-24,0,9.5,305,5,145,Moderate,Baseline Pollution
+2023-11-25,0,9.8,315,4,140,Moderate,Baseline Pollution
+2023-11-26,0,10.0,320,4,135,Moderate,Baseline Pollution
+2023-11-27,0,15.0,310,4,90,Satisfactory,Baseline Pollution
+2023-11-28,0,12.0,315,4,110,Moderate,Baseline Pollution
+2023-11-29,0,10.0,300,4,130,Moderate,Baseline Pollution
+2023-11-30,0,8.0,310,4,160,Moderate,Baseline Pollution
+2023-12-01,0,3.0,150,4,280,Poor,Local Pollution Lock
+2023-12-02,0,2.8,160,4,300,Very Poor,Local Pollution Lock
+2023-12-03,0,2.5,140,3,320,Very Poor,Local Pollution Lock
+2023-12-04,0,2.2,155,3,340,Very Poor,Local Pollution Lock
+2023-12-05,0,2.0,145,3,360,Very Poor,Local Pollution Lock
+2023-12-06,0,1.8,135,3,380,Very Poor,Local Pollution Lock
+2023-12-07,0,1.5,160,3,400,Severe,Local Pollution Lock
+2023-12-08,0,1.5,150,3,410,Severe,Local Pollution Lock
+2023-12-09,0,1.5,140,3,420,Severe,Local Pollution Lock
+2023-12-10,0,1.5,155,3,430,Severe,Local Pollution Lock
+2023-12-11,0,1.8,145,3,415,Severe,Local Pollution Lock
+2023-12-12,0,2.0,135,3,400,Severe,Local Pollution Lock
+2023-12-13,0,2.2,160,3,385,Very Poor,Local Pollution Lock
+2023-12-14,0,2.5,150,3,370,Very Poor,Local Pollution Lock
+2023-12-15,0,2.8,140,3,355,Very Poor,Local Pollution Lock
+2023-12-16,0,3.0,155,3,340,Very Poor,Local Pollution Lock
+2023-12-17,0,3.2,145,3,325,Very Poor,Local Pollution Lock
+2023-12-18,0,3.5,135,3,310,Very Poor,Local Pollution Lock
+2023-12-19,0,3.8,160,3,295,Poor,Local Pollution Lock
+2023-12-20,0,4.0,150,3,280,Poor,Local Pollution Lock
+2023-12-21,0,4.2,140,3,265,Poor,Local Pollution Lock
+2023-12-22,0,4.5,155,3,250,Poor,Local Pollution Lock
+2023-12-23,0,4.8,145,3,235,Poor,Local Pollution Lock
+2023-12-24,0,5.0,135,3,220,Poor,Local Pollution Lock
+2023-12-25,0,5.2,160,3,205,Poor,Local Pollution Lock
+2023-12-26,0,5.5,150,3,190,Moderate,Local Pollution Lock
+2023-12-27,0,5.8,140,3,175,Moderate,Local Pollution Lock
+2023-12-28,0,6.0,155,3,160,Moderate,Local Pollution Lock
+2023-12-29,0,6.2,145,3,145,Moderate,Local Pollution Lock
+2023-12-30,0,6.5,135,3,130,Moderate,Local Pollution Lock
+2023-12-31,0,6.8,160,3,115,Moderate,Local Pollution Lock
+2024-01-01,0,7.0,150,3,100,Satisfactory,Local Pollution Lock
+2024-01-02,0,7.2,140,3,110,Moderate,Local Pollution Lock
+2024-01-03,0,7.5,155,3,120,Moderate,Local Pollution Lock
+2024-01-04,0,7.8,145,3,130,Moderate,Local Pollution Lock
+2024-01-05,0,8.0,135,3,140,Moderate,Local Pollution Lock
+2024-01-06,0,8.2,160,3,150,Moderate,Local Pollution Lock
+2024-01-07,0,8.5,150,3,160,Moderate,Local Pollution Lock
+2024-01-08,0,8.8,140,3,170,Moderate,Local Pollution Lock
+2026-01-28,3500,1.5,315.0,10.0,524,Severe,Stubble Transport
